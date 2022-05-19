@@ -1,0 +1,161 @@
+import java.util.Stack;
+
+import java.awt.Point;
+
+import java.util.List;
+
+import java.util.ArrayList;
+
+public class Main {
+    public static void main(String args[]) {
+    
+      Point entrada = new Point(0,0);
+      
+      Point saida = new Point(7,7);
+      
+      Point barreira = new Point(1,2);
+      
+      List<Point> barreiras = new ArrayList<>();
+      
+      barreiras.add(barreira);
+      
+      barreiras.add(new Point(0,2));
+      barreiras.add(new Point(0,3));
+      barreiras.add(new Point(0,4));
+      barreiras.add(new Point(0,5));
+      barreiras.add(new Point(0,6));
+      barreiras.add(new Point(0,7));
+      barreiras.add(new Point(1,0));
+      barreiras.add(new Point(1,2));
+      barreiras.add(new Point(1,3));
+      barreiras.add(new Point(1,4));
+      barreiras.add(new Point(1,5));
+      barreiras.add(new Point(1,6));
+      barreiras.add(new Point(1,7));
+      barreiras.add(new Point(2,0));
+      barreiras.add(new Point(2,4));
+      barreiras.add(new Point(2,5));
+      barreiras.add(new Point(2,6));
+      barreiras.add(new Point(2,7));
+      barreiras.add(new Point(3,0));
+      barreiras.add(new Point(3,1));
+      barreiras.add(new Point(3,2));
+      barreiras.add(new Point(3,6));
+      barreiras.add(new Point(3,7));
+      barreiras.add(new Point(4,0));
+      barreiras.add(new Point(4,1));
+      barreiras.add(new Point(4,2));
+      barreiras.add(new Point(4,3));
+      barreiras.add(new Point(4,4));
+      barreiras.add(new Point(4,6));
+      barreiras.add(new Point(4,7));
+      barreiras.add(new Point(5,0));
+      barreiras.add(new Point(5,1));
+      barreiras.add(new Point(5,2));
+      barreiras.add(new Point(5,3));
+      barreiras.add(new Point(5,4));
+      barreiras.add(new Point(5,7));
+      barreiras.add(new Point(6,0));
+      barreiras.add(new Point(6,1));
+      barreiras.add(new Point(6,2));
+      barreiras.add(new Point(6,3));
+      barreiras.add(new Point(6,4));
+      barreiras.add(new Point(6,5));
+      barreiras.add(new Point(6,7));
+      barreiras.add(new Point(7,0));
+      barreiras.add(new Point(7,1));
+      barreiras.add(new Point(7,2));
+      barreiras.add(new Point(7,3));
+      barreiras.add(new Point(7,4));
+      barreiras.add(new Point(7,5));
+      barreiras.add(new Point(7,6));
+      barreiras.add(new Point(7,7));
+      
+      for (int x = 0; x < 8; x++) {
+      
+        for (int y = 0; y < 8; y++) {
+        
+            Point posicao = new Point(x,y);
+            
+            if (posicao.equals(entrada)) {
+            
+                System.out.print("E");
+                
+            } else if (posicao.equals(saida)) {
+            
+                System.out.print("S");
+                
+            } else if (barreiras.contains(posicao)) {
+            
+                System.out.print("#");
+            } else {
+                System.out.print(" ");
+            }
+        }
+        System.out.println("");
+      }
+    }
+}
+/// implementar pilha
+// isEmpty verifica se está vazia
+// size verifica o tamanho , não vai ser necessário
+// pop vai desembilhar a pilha
+// push vai empilhar
+// top visualiza o último item sem desempilhar -
+18h09
+public class Main {
+    public Object[] pilha;
+    public int posicaoPilha;
+    public Main() {
+        this.posicaoPilha = -1;
+// indica que esta nula, vazia, pois posição um indica que contém informação
+        this.pilha = new Object[1000];
+// criando uma pilha com 1000 posições
+    }
+    public boolean pilhaVazia() {
+        //isEmpty
+        if (this.posicaoPilha == -1) {
+            return true;
+        }
+        return false;
+    }
+    public int tamanho() {
+        //is
+        if (this.pilhaVazia()) {
+            return 0;
+        }
+        return this.posicaoPilha + 1;
+    }
+    public Object exibeUltimoValor() {
+        //top
+        if (this.pilhaVazia()) {
+            return null;
+        }
+        return this.pilha[this.posicaoPilha];
+    }
+    public Object desempilhar() {
+        //pop
+        if (pilhaVazia()) {
+            return null;
+        }
+        return this.pilha[this.posicaoPilha--];
+    }
+    public void empilhar(Object valor) {
+        // push
+        if (this.posicaoPilha < this.pilha.length - 1) {
+            this.pilha[++posicaoPilha] = valor;
+        }
+    }
+    public static void main(String args[]) {
+        Main p = new Main();
+        p.empilhar("Portuguesa ");
+        p.empilhar("Frango com catupiry ");
+        p.empilhar("Calabresa ");
+        p.empilhar("Quatro queijos ");
+        p.empilhar(10);
+                while (p.pilhaVazia() == false) {
+            System.out.println(p.desempilhar());
+        }
+    }
+}
+
